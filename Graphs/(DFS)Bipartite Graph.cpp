@@ -2,28 +2,31 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool isCyclicDFS(int node, int parent, vector<int> &vis, vector<int> adj[]) {
-	vis[node] = 1;                               //first mark the current node as visited
-	for (auto eachNode : adj[node]) {
-		if (!vis[eachNode]) {
-			/* INTUTION: First check whether the node is visited or not ,if the node is not visited then call the same function and if the current node is visited then
-			 go and check the parent that its parent is same as the current node or not if not then return true (means it has a cycle) */
-			if (isCyclicDFS(eachNode, node, vis, adj))
-				return true;
+bool bipartiteDFS(int node, vector<int> adj[], vector<int> &color) {
+	if (color[node] == -1)	color[node] = 1;//if it is not colored then first color it
+	for (auto &all : adj[node]) {
+		if (color[all] == -1) {
+			color[all] = 1 - color[node];//mark with opposite color
+			if (!bipartiteDFS(i, adj, color)) return false;
 		}
-		else if (eachNode != parent)
-			return true;
+		//else if check whether the adjacents of current node having same color or not if not then return false'
+		else if (color[all] == color[node])
+			return false;
 	}
-	return false;
+
+	return true;
 }
 
-
-bool checkForCycleInAGraph( vector<int> adj[], int vert) {
-	vector<int> vis(vert, 0);
-	for (int node = 0; node < vert; node++) {
-		if (!vis[node])
-			if (isCyclicDFS(node, -1, vis, adj))
-				return true;
+//main check function which return final answer
+bool isBipartite(vector<int> adj[], int n) {
+	vector<int> color(n, -1);
+//for multiple components
+	for (int i = 0; i < n; i++) {
+		if (color[i] == -1) {
+//check for the bipartite
+			if (!bipartiteDFS(i, adj, color)) return false;
+		}
 	}
-	return false;
+	return true;
+
 }
