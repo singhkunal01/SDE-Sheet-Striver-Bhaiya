@@ -49,3 +49,7 @@ For the Graphs :
 |                 \   /                     [ (4) -> 2, 3, ]
 5 --------------    3                       [ (5) -> 1, 3, ]
 */
+
+//call the function in ur main program by inputting number of vertices , edges and taking adjacency list as Input Format.
+
+© singhkunal01
