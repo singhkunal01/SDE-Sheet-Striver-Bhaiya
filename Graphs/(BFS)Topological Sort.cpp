@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// Note : This algorithm is Also known as KAHN's algorithm
+
 /*.............Topological sort using BFS traversal Also called as Kahn's Algorithm.............*/
 
 vector<int> topologicalSortBFS(int vert, vector<int> adj[]) {
@@ -33,6 +35,8 @@ vector<int> topologicalSortBFS(int vert, vector<int> adj[]) {
 	}
 	return resTopoSort;
 }
+
+
 
 // TC: O(N+E)
 // SC: O(N)+O(N)=O(2N)
