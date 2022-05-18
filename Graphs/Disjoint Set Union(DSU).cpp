@@ -58,3 +58,7 @@ void disjointSet() {
 	/*if (findParent(node1) != findParent(node2)) cout << "Different Components";
 	else cout << "Same Components";*/
 }
+
+//call the function in ur main program by inputting number of vertices , edges and taking adjacency list as Input Format.
+
+© singhkunal01
